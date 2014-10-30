@@ -45,15 +45,17 @@ public class MyPluginLayout extends FrameLayout  {
   private Activity mActivity = null;
   
   @SuppressLint("NewApi")
-  public MyPluginLayout(CordovaWebView webView, Activity activity) {
+  public MyPluginLayout(CordovaWebView webView, Activity activity, boolean isCrosswalk) {
     super(webView.getContext());
     mActivity = activity;
     this.webView = webView;
     this.root = (ViewGroup) webView.getParent();
     this.context = webView.getContext();
     webView.setBackgroundColor(Color.TRANSPARENT);
-    if (VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-      webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+    if (isCrosswalk == false) {
+      if (VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+        webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+      }
     }
     frontLayer = new FrontLayerLayout(this.context);
     

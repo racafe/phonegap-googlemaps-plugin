@@ -171,39 +171,43 @@ public class GoogleMaps extends CordovaPlugin implements View.OnClickListener, O
     cordova.getActivity().runOnUiThread(new Runnable() {
       @SuppressLint("NewApi")
       public void run() {
-        String settingClassName = webView.getSettings().getClass().toString();
-        if (settingClassName.indexOf("XWalkSetting") > 0) {
-          Log.d("GoogleMaps", "--->CrossWalk mode");
-          isCrossWalk = true;
+        try {
+          Class<?> xwalkViewCls;
+          try {
+            xwalkViewCls = Class.forName("org.xwalk.core.XWalkView");
+            isCrossWalk = true;
+          } catch (ClassNotFoundException e) {}
+        } catch (Exception e) {
+          e.printStackTrace();
         }
-        
+
+        root.setBackgroundColor(Color.WHITE);
+        if (VERSION.SDK_INT <= Build.VERSION_CODES.GINGERBREAD_MR1) {
+          activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        }
         if (isCrossWalk == false) {
           try {
-            Method method = webView.getClass().getMethod("getSettings", null);
-            WebSettings settings = (WebSettings)method.invoke(null, null);
+            Method method = webView.getClass().getMethod("getSettings");
+            WebSettings settings = (WebSettings)method.invoke(webView);
             settings.setRenderPriority(RenderPriority.HIGH);
             settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
           } catch (Exception e) {
             e.printStackTrace();
           }
-        }
-        if (Build.VERSION.SDK_INT >= 11){
-          webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        }
-        
-        root.setBackgroundColor(Color.WHITE);
-        if (VERSION.SDK_INT <= Build.VERSION_CODES.GINGERBREAD_MR1) {
-          activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        }
-        if (VERSION.SDK_INT <= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
-          Log.d(TAG, "Google Maps Plugin reloads the browser to change the background color as transparent.");
-          webView.setBackgroundColor(0);
-          if (isCrossWalk == false) {
-            try {
-              Method method = webView.getClass().getMethod("reload", null);
-              method.invoke(null, null);
-            } catch (Exception e) {
-              e.printStackTrace();
+          if (Build.VERSION.SDK_INT >= 11){
+            webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+          }
+          
+          if (VERSION.SDK_INT <= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
+            Log.d(TAG, "Google Maps Plugin reloads the browser to change the background color as transparent.");
+            webView.setBackgroundColor(0);
+            if (isCrossWalk == false) {
+              try {
+                Method method = webView.getClass().getMethod("reload");
+                method.invoke(null);
+              } catch (Exception e) {
+                e.printStackTrace();
+              }
             }
           }
         }
@@ -323,7 +327,7 @@ public class GoogleMaps extends CordovaPlugin implements View.OnClickListener, O
       return;
     }
     
-    mPluginLayout = new MyPluginLayout(webView, activity);
+    mPluginLayout = new MyPluginLayout(webView, activity, isCrossWalk);
     
     // ------------------------------
     // Check of Google Play Services
@@ -691,8 +695,8 @@ public class GoogleMaps extends CordovaPlugin implements View.OnClickListener, O
   private void closeWindow() {
     if (isCrossWalk == false) {
       try {
-        Method method = webView.getClass().getMethod("hideCustomView", null);
-        method.invoke(null, null);
+        Method method = webView.getClass().getMethod("hideCustomView");
+        method.invoke(null);
       } catch (Exception e) {
         e.printStackTrace();
       }
@@ -1151,6 +1155,7 @@ public class GoogleMaps extends CordovaPlugin implements View.OnClickListener, O
    * @param eventName
    * @param point
    */
+  @SuppressWarnings("unused")
   private void onMapEvent(final String eventName) {
     webView.loadUrl("javascript:plugin.google.maps.Map._onMapEvent('" + eventName + "')");
   }
