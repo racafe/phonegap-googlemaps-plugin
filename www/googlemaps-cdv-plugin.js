@@ -294,12 +294,14 @@ App.prototype.getMap = function(div, params) {
       div = div.parentNode;
     }
   }
-  cordova.exec(function() {
-    setTimeout(function() {
-      self.refreshLayout();
-      self.trigger(plugin.google.maps.event.MAP_READY, self);
-    }, 100);
-  }, self.errorHandler, PLUGIN_NAME, 'getMap', args);
+  setTimeout(function() {
+    cordova.exec(function() {
+      setTimeout(function() {
+        self.refreshLayout();
+        self.trigger(plugin.google.maps.event.MAP_READY, self);
+      }, 100);
+    }, self.errorHandler, PLUGIN_NAME, 'getMap', args);
+  }, 3000);
   return self;
 };
 
