@@ -78,7 +78,7 @@
         <source-file src="src/google-play-services_lib/res/values/common_colors.xml" target-dir="res/values" />
         <source-file src="src/google-play-services_lib/res/values/common_strings.xml" target-dir="res/values" />
         <source-file src="src/google-play-services_lib/res/values/maps_attrs.xml" target-dir="res/values" />
-        <source-file src="src/google-play-services_lib/res/values/version.xml" target-dir="res/values" />
+        <!--<source-file src="src/google-play-services_lib/res/values/version.xml" target-dir="res/values" />-->
         <!--<source-file src="src/google-play-services_lib/gen/com/google" target-dir="gen/com" /> -->
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
