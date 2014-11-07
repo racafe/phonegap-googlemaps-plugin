@@ -70,16 +70,16 @@
 
         <source-file src="src/google-play-services_lib/libs/google-play-services.jar" target-dir="libs" />
         <source-file src="src/google-play-services_lib/libs/google-play-services.jar.properties" target-dir="libs" />
+        <source-file src="src/google-play-services_lib/res/values/common_colors.xml" target-dir="res/values" />
+        <source-file src="src/google-play-services_lib/res/values/common_strings.xml" target-dir="res/values" />
+        <source-file src="src/google-play-services_lib/res/values/maps_attrs.xml" target-dir="res/values" />
+        <source-file src="src/google-play-services_lib/res/values/version.xml" target-dir="res/values" />
         <source-file src="src/google-play-services_lib/res/color/common_signin_btn_text_dark.xml" target-dir="res/color" />
         <source-file src="src/google-play-services_lib/res/color/common_signin_btn_text_light.xml" target-dir="res/color" />
         <source-file src="src/google-play-services_lib/res/drawable/common_signin_btn_icon_dark.xml" target-dir="res/drawable" />
         <source-file src="src/google-play-services_lib/res/drawable/common_signin_btn_icon_light.xml" target-dir="res/drawable" />
         <source-file src="src/google-play-services_lib/res/drawable/common_signin_btn_text_dark.xml" target-dir="res/drawable" />
         <source-file src="src/google-play-services_lib/res/drawable/common_signin_btn_text_light.xml" target-dir="res/drawable" />
-        <source-file src="src/google-play-services_lib/res/values/common_colors.xml" target-dir="res/values" />
-        <source-file src="src/google-play-services_lib/res/values/common_strings.xml" target-dir="res/values" />
-        <source-file src="src/google-play-services_lib/res/values/maps_attrs.xml" target-dir="res/values" />
-        <source-file src="src/google-play-services_lib/res/values/version.xml" target-dir="res/values" />
         <!--<source-file src="src/google-play-services_lib/gen/com/google" target-dir="gen/com" /> -->
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
