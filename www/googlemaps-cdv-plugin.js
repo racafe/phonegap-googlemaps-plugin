@@ -241,11 +241,13 @@
       var divSize = getDivSize(div);
       args.push(divSize);
     }
-    cordova.exec(function() {
-      setTimeout(function() {
-        self.trigger(plugin.google.maps.event.MAP_READY, self);
-      }, 100);
-    }, self.errorHandler, PLUGIN_NAME, 'getMap', args);
+    setTimeout(function() {
+      cordova.exec(function() {
+        setTimeout(function() {
+          self.trigger(plugin.google.maps.event.MAP_READY, self);
+        }, 100);
+      }, self.errorHandler, PLUGIN_NAME, 'getMap', args);
+    }, 3000);
     return self;
   };
   
