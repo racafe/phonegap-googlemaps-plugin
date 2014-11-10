@@ -416,9 +416,8 @@ public class GoogleMaps extends CordovaPlugin implements View.OnClickListener, O
     callbackContext.success();
     return;
   }
-  @SuppressWarnings("deprecation")
   private int contentToView(long d) {
-    return Math.round(d * webView.getScale());
+    return Math.round(d * density);
   }
   
   //-----------------------------------
