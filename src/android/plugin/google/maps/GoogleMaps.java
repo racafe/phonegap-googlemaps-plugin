@@ -360,7 +360,11 @@ public class GoogleMaps extends CordovaPlugin implements View.OnClickListener, O
     }
     
     mapView = new MapView(activity, options);
-    mapView.onCreate(null);
+    try {
+      mapView.onCreate();
+    } catch (Exception e) {
+          mapView.onCreate(new Bundle());
+    }
     mapView.onResume();
     map = mapView.getMap();
     
