@@ -9,17 +9,10 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
 $(document).on('deviceready', function() {
-  var map = plugin.google.maps.Map.getMap($("#map_canvas")[0]);
-  
-  map.addMarker({
-    icon: {
-      url: "www/images/test.png",
-      size: {
-        width: 75,
-        height: 89
-      }
-    },
-    position: new plugin.google.maps.LatLng(0, 0)
+  var map = plugin.google.maps.Map.getMap($("#map_canvas")[0], {
+    'controls' : {
+      'myLocationButton': true
+    }
   });
 });
     </script>
@@ -41,9 +34,6 @@ $(document).on('deviceready', function() {
     </style>
   </head>
   <body>
-<div id="map_canvas" >
-  <img src="images/test.png">
-  <img src="images/test.png" width="75" height="89">
-</div>
+<div id="map_canvas" ></div>
   </body>
 </html>

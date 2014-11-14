@@ -52,7 +52,7 @@ $(document).on("deviceready", function() {
     "open": onSideMenuOpen
   });
   
-  loadPage(map, "test");
+  loadPage(map, "welcome");
 });
 
 /**
