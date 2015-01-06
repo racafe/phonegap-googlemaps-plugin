@@ -42,6 +42,9 @@ NSDictionary *initOptions;
                                                             [NSNumber numberWithInt:128],
                                                             [NSNumber numberWithInt:128],
                                                             [NSNumber numberWithInt:128], nil] parsePluginColor];
+                                                            
+    self.view.backgroundColor = [UIColor clearColor];
+    self.view.opaque = NO;                                                            
   
     //------------
     // Initialize
