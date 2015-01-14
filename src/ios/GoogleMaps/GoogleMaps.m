@@ -29,9 +29,7 @@
   self.pluginScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   self.webView.scrollView.delegate = self;
   
-  
-  self.webView.backgroundColor = [UIColor clearColor];
-  self.webView.opaque = NO;
+
   
   [self.pluginScrollView setContentSize:CGSizeMake(320, 960) ];
   
