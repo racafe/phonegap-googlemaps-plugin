@@ -20,7 +20,7 @@
   
   
   self.pluginLayer = [[MyPluginLayer alloc] initWithFrame:self.webView.frame];
-  self.pluginLayer.backgroundColor = [UIColor redColor];
+  self.pluginLayer.backgroundColor = [UIColor blueColor];
   self.pluginLayer.webView = self.webView;
   self.pluginLayer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   
@@ -41,6 +41,9 @@
   [self.pluginLayer addSubview:self.pluginScrollView];
   [self.pluginLayer addSubview:self.webView];
   [self.root addSubview:self.pluginLayer];
+  [self.pluginLayer bringSubviewToFront:self.webView];
+  
+
   
   NSString *APIKey = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"Google Maps API Key"];
   if (APIKey == nil) {
