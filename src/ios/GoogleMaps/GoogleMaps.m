@@ -20,7 +20,7 @@
   
   
   self.pluginLayer = [[MyPluginLayer alloc] initWithFrame:self.webView.frame];
-  self.pluginLayer.backgroundColor = [UIColor blueColor];
+  self.pluginLayer.backgroundColor = [UIColor greenColor];
   self.pluginLayer.webView = self.webView;
   self.pluginLayer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   
@@ -30,7 +30,7 @@
   self.webView.scrollView.delegate = self;
   
   
-  self.webView.backgroundColor = [UIColor clearColor];
+  self.webView.backgroundColor = [UIColor redColor];
   self.webView.opaque = NO;
   
   [self.pluginScrollView setContentSize:CGSizeMake(320, 960) ];
@@ -41,7 +41,7 @@
   [self.pluginLayer addSubview:self.pluginScrollView];
   [self.pluginLayer addSubview:self.webView];
   [self.root addSubview:self.pluginLayer];
-  [self.pluginLayer bringSubviewToFront:self.webView];
+  
   
 
   
