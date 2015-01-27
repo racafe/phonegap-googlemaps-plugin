@@ -20,7 +20,8 @@
   
   
   self.pluginLayer = [[MyPluginLayer alloc] initWithFrame:self.webView.frame];
-  self.pluginLayer.backgroundColor = [UIColor redColor];
+  self.pluginLayer.backgroundColor = [UIColor clearColor];
+  self.pluginLayer.opaque = NO;
   self.pluginLayer.webView = self.webView;
   self.pluginLayer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   
