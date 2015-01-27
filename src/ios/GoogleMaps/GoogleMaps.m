@@ -36,16 +36,17 @@
   [self.pluginScrollView setContentSize:CGSizeMake(320, 960) ];
   
   self.root = self.webView.superview;
-  [self.pluginLayer addSubview:self.pluginScrollView];
+  
   /*
   [self.webView removeFromSuperview];
   self.pluginLayer.webView = self.webView;
-  
+  [self.pluginLayer addSubview:self.pluginScrollView];
   [self.pluginLayer addSubview:self.webView];
   [self.root addSubview:self.pluginLayer];
   */
   //add as a subview
-  [self.root insertSubview:self.pluginLayer belowSubview:self.webView];
+  [self.root insertSubview:self.pluginScrollView belowSubview:self.webView];
+  [self.root insertSubview:self.pluginLayer aboveSubview:self.webView];
   
 
   
