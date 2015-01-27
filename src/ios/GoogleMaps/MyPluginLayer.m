@@ -14,7 +14,7 @@
 {
   self = [super initWithFrame:aRect];
   self.HTMLNodes = [[NSMutableDictionary alloc] init];
-  self.clickable = YES;
+  self.clickable = NO;
   self.debuggable = NO;
   return self;
 }
