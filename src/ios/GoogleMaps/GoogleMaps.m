@@ -26,6 +26,7 @@
   self.pluginLayer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   
   self.pluginScrollView = [[MyPluginScrollView alloc] initWithFrame:self.webView.frame];
+  self.pluginLayer.backgroundColor = [UIColor whiteColor];
   self.pluginScrollView.debugView.webView = self.webView;
   self.pluginScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   self.webView.scrollView.delegate = self;
