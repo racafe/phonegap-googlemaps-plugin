@@ -74,14 +74,7 @@
     }
   }
   
-    NSString *message = [NSString stringWithFormat:@"isMapAction: %@, point.x: %@, point.y: %@, offsetX: %@", isMapAction, point.x, point.y, offsetX];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"MyPluginLayer."
-                                              message:message
-                                              delegate:self
-                                              cancelButtonTitle:@"CLOSE"
-                                              otherButtonTitles:nil];
-    [alert show];  
+
   
   
   if (isMapAction == YES) {
