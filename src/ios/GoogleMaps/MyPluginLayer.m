@@ -37,18 +37,9 @@
   if (self.clickable == NO ||
       self.mapCtrl.map == nil ||
       self.mapCtrl.map.hidden == YES) {
-      
-      NSString *message = [NSString stringWithFormat:@"self.clickable: %@", self.clickable];
-      
-      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"MyPluginLayer.hittest"
-                                                message:message
-                                                delegate:self
-                                                cancelButtonTitle:@"CLOSE"
-                                                otherButtonTitles:nil];
-      [alert show];        
-      
-    return [super hitTest:point withEvent:event];
+    return nil;
   }
+  //return [super hitTest:point withEvent:event];
   
   float offsetX = self.webView.scrollView.contentOffset.x;// + self.mapCtrl.view.frame.origin.x;
   float offsetY = self.webView.scrollView.contentOffset.y;// + self.mapCtrl.view.frame.origin.y;
