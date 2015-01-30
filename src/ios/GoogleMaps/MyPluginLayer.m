@@ -41,8 +41,8 @@
   }
   //return [super hitTest:point withEvent:event];
   
-  float offsetX = self.webView.scrollView.contentOffset.x + self.mapCtrl.view.frame.origin.x;
-  float offsetY = self.webView.scrollView.contentOffset.y + self.mapCtrl.view.frame.origin.y;
+  float offsetX = self.webView.scrollView.contentOffset.x;// + self.mapCtrl.view.frame.origin.x;
+  float offsetY = self.webView.scrollView.contentOffset.y;// + self.mapCtrl.view.frame.origin.y;
   
   float left = [[self.embedRect objectForKey:@"left"] floatValue] - offsetX;
   float top = [[self.embedRect objectForKey:@"top"] floatValue] - offsetY;
@@ -100,7 +100,7 @@
     return hitView;
   }
   
-  return [super hitTest:point withEvent:event];
+  return nil; //[super hitTest:point withEvent:event];
 }
 
 - (void)drawRect:(CGRect)rect
