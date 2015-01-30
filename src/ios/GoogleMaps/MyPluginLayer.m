@@ -14,7 +14,7 @@
 {
   self = [super initWithFrame:aRect];
   self.HTMLNodes = [[NSMutableDictionary alloc] init];
-  self.clickable = NO;
+  self.clickable = YES;
   self.debuggable = NO;
   return self;
 }
@@ -72,6 +72,17 @@
       
     }
   }
+  
+    NSString *message = [NSString stringWithFormat:@"isMapAction: %@, point.x: %@, point.y: %@, offsetX: %@", isMapAction, point.x, point.y, offsetX];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"MyPluginLayer."
+                                              message:message
+                                              delegate:self
+                                              cancelButtonTitle:@"CLOSE"
+                                              otherButtonTitles:nil];
+    [alert show];  
+  
+  
   if (isMapAction == YES) {
     // The issue #217 is fixed by @YazeedFares. Thank you!
     offsetX = self.mapCtrl.view.frame.origin.x - offsetX;
