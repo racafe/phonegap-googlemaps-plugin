@@ -47,7 +47,7 @@
   */
   //add as a subview
   [self.root insertSubview:self.pluginScrollView belowSubview:self.webView];
-  [self.root insertSubview:self.pluginLayer belowSubview:self.webView];
+  [self.root insertSubview:self.pluginLayer aboveSubview:self.webView];
   
 
   
