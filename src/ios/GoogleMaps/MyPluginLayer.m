@@ -37,6 +37,16 @@
   if (self.clickable == NO ||
       self.mapCtrl.map == nil ||
       self.mapCtrl.map.hidden == YES) {
+      
+      NSString *message = [NSString stringWithFormat:@"self.clickable: %@", self.clickable];
+      
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"MyPluginLayer.hittest"
+                                                message:message
+                                                delegate:self
+                                                cancelButtonTitle:@"CLOSE"
+                                                otherButtonTitles:nil];
+      [alert show];        
+      
     return [super hitTest:point withEvent:event];
   }
   
