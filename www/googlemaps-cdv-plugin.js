@@ -2017,7 +2017,7 @@ _mapInstance.addEventListener("keepWatching_changed", function(oldValue, newValu
   }
   function init()
   {
-    window._watchDogTimer = window.setInterval(function() { myFunc(); }, 100);
+    //window._watchDogTimer = window.setInterval(function() { myFunc(); }, 100);
   }
   function myFunc()
   {
