@@ -176,7 +176,7 @@
 -(void)updateCameraPosition: (NSString*)action command:(CDVInvokedUrlCommand *)command {
   NSDictionary *json = [command.arguments objectAtIndex:1];
   
-  int bearing = (int)[[json valueForKey:@"bearing"] integerValue];
+  double bearing = [[json valueForKey:@"bearing"] doubleValue];
   double angle = [[json valueForKey:@"tilt"] doubleValue];
   double zoom = [[json valueForKey:@"zoom"] doubleValue];
   
