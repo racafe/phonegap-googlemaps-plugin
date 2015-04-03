@@ -54,10 +54,10 @@ NSDictionary *initOptions;
     //------------------
     // Create a position change timer
     //-----------------
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.03
-                              target:self selector:@selector(checkPosition:)
-                              userInfo:nil repeats:YES];
-    self.positionChangedTimer = timer;
+    //NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.03
+    //                          target:self selector:@selector(checkPosition:)
+    //                          userInfo:nil repeats:YES];
+    //self.positionChangedTimer = timer;
   
     //------------------
     // Create a map view
@@ -229,7 +229,7 @@ NSDictionary *initOptions;
  * @callback map camera_change
  */
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
-  //[self triggerCameraEvent:@"camera_change" position:position];
+  [self triggerCameraEvent:@"camera_change" position:position];
 }
 /**
  * @callback map camera_idle
