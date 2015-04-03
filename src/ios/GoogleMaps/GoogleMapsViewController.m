@@ -54,7 +54,7 @@ NSDictionary *initOptions;
     //------------------
     // Create a position change timer
     //-----------------
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.02
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.03
                               target:self selector:@selector(checkPosition:)
                               userInfo:nil repeats:YES];
     self.positionChangedTimer = timer;
