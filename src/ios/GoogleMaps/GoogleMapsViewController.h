@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #import "PluginUtil.h"
 #import "NSData+Base64.h"
+#import <Foundation/Foundation.h>
 
 @interface GoogleMapsViewController : UIViewController<GMSMapViewDelegate>
 
@@ -21,6 +22,8 @@
 @property (nonatomic) BOOL isFullScreen;
 @property (nonatomic) NSDictionary *embedRect;
 @property (nonatomic) CGRect screenSize;
+@property (nonatomic) BOOL positionChanging;
+@property (weak) NSTimer *changePositionTimer;
 
 
 //- (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker;
