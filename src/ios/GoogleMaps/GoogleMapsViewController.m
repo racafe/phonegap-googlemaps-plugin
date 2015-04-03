@@ -18,6 +18,7 @@ NSDictionary *initOptions;
     initOptions = [[NSDictionary alloc] initWithDictionary:options];
     self.plugins = [NSMutableDictionary dictionary];
     self.isFullScreen = NO;
+    self.positionChanging = NO;
     self.embedRect = nil;
     self.screenSize = [[UIScreen mainScreen] bounds];
 
@@ -49,6 +50,14 @@ NSDictionary *initOptions;
     // Initialize
     //------------
     self.overlayManager = [NSMutableDictionary dictionary];
+
+    //------------------
+    // Create a position change timer
+    //-----------------
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.05
+                              target:self selector:@selector(checkPosition:)
+                              userInfo:nil repeats:YES];
+    self.positionChangedTimer = timer;
   
     //------------------
     // Create a map view
@@ -199,6 +208,7 @@ NSDictionary *initOptions;
  */
 - (void) mapView:(GMSMapView *)mapView willMove:(BOOL)gesture
 {
+  self.positionChanging = YES;	
   dispatch_queue_t gueue = dispatch_queue_create("plugin.google.maps.Map._onMapEvent", NULL);
   dispatch_sync(gueue, ^{
   
@@ -208,17 +218,25 @@ NSDictionary *initOptions;
 }
 
 
+- (void)checkPosition:(NSTimer *)timer {
+  if (self.positionChanging) {
+    GMSCameraPosition *position = self.map.camera;
+    [self triggerCameraEvent:@"camera_change" position:position];  	
+  }
+}
+
 /**
  * @callback map camera_change
  */
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
-  [self triggerCameraEvent:@"camera_change" position:position];
+  //[self triggerCameraEvent:@"camera_change" position:position];
 }
 /**
  * @callback map camera_idle
  */
 - (void) mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position
 {
+  self.positionChanging = NO;	
   [self triggerCameraEvent:@"camera_idle" position:position];
 }
 
