@@ -23,7 +23,7 @@
 @property (nonatomic) NSDictionary *embedRect;
 @property (nonatomic) CGRect screenSize;
 @property (nonatomic) BOOL positionChanging;
-@property (weak) NSTimer *positionChangedTimer;
+@property (nonatomic, strong) NSTimer *positionChangedTimer;
 
 
 //- (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker;
