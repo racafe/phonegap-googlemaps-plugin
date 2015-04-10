@@ -76,16 +76,33 @@
   NSString *id = [NSString stringWithFormat:@"groundOverlay_icon_%lu", (unsigned long)layer.hash];
   
 
-  NSRange range = [urlStr rangeOfString:@"http"];
-  if (range.location == NSNotFound) {
+  if ([urlStr rangeOfString:@"data:image/"].location != NSNotFound &&
+      [urlStr rangeOfString:@";base64,"].location != NSNotFound) {
+    
     /**
-    layer.icon = [UIImage imageNamed:urlStr];
-    [self.mapCtrl.overlayManager setObject:layer.icon forKey: id];
-    **/
-    //accept base64 encoded image in the url instead, cordova filewriting for localhost access is too slow...
-    NSData *data = [[NSData alloc] initWithBase64EncodedString:urlStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
+     * Base64 icon
+     */
+    isTextMode = false;
+    NSArray *tmp = [urlStr componentsSeparatedByString:@","];
+    
+    NSData *decodedData;
+    #if !defined(__IPHONE_8_0)
+      if ([PluginUtil isIOS7_OR_OVER]) {
+        decodedData = [NSData dataFromBase64String:tmp[1]];
+      } else {
+        #if !defined(__IPHONE_7_0)
+          decodedData = [[NSData alloc] initWithBase64Encoding:(NSString *)tmp[1]];
+        #endif
+      }
+    #else
+      decodedData = [NSData dataFromBase64String:tmp[1]];
+    #endif
+    layer.icon =  [[UIImage alloc] initWithData:decodedData];
+    
+    
+    //NSData *data = [[NSData alloc] initWithBase64EncodedString:urlStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
 
-    layer.icon = [UIImage imageWithData:data]; 
+    //layer.icon = [UIImage imageWithData:data]; 
     
   } else {
     dispatch_queue_t gueue = dispatch_queue_create("GoogleMap_createGroundOverlay", NULL);
