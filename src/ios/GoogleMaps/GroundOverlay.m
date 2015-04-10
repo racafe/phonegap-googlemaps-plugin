@@ -78,8 +78,15 @@
 
   NSRange range = [urlStr rangeOfString:@"http"];
   if (range.location == NSNotFound) {
+    /**
     layer.icon = [UIImage imageNamed:urlStr];
     [self.mapCtrl.overlayManager setObject:layer.icon forKey: id];
+    **/
+    //accept base64 encoded image in the url instead, cordova filewriting for localhost access is too slow...
+    NSData* data = [[NSData alloc] initWithBase64EncodedString:urlStr options:0];
+    UIImage* image = [UIImage imageWithData:data];
+    layer.icon = image;    
+    
   } else {
     dispatch_queue_t gueue = dispatch_queue_create("GoogleMap_createGroundOverlay", NULL);
     dispatch_sync(gueue, ^{
