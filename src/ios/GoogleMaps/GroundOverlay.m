@@ -82,7 +82,7 @@
     /**
      * Base64 icon
      */
-    isTextMode = false;
+    
     NSArray *tmp = [urlStr componentsSeparatedByString:@","];
     
     NSData *decodedData;
