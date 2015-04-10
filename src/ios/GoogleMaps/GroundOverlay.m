@@ -83,7 +83,8 @@
     [self.mapCtrl.overlayManager setObject:layer.icon forKey: id];
     **/
     //accept base64 encoded image in the url instead, cordova filewriting for localhost access is too slow...
-    NSData* data = [[NSData alloc] initWithBase64EncodedString:urlStr options:0];
+    NSData *data = [[NSData alloc] initWithBase64EncodedString:urlStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
+   
     UIImage* image = [UIImage imageWithData:data];
     layer.icon = image;    
     
