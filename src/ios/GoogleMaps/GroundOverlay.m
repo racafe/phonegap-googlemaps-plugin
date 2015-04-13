@@ -84,19 +84,7 @@
      */
     
     NSArray *tmp = [urlStr componentsSeparatedByString:@","];
-    
-    NSData *decodedData;
-    #if !defined(__IPHONE_8_0)
-      if ([PluginUtil isIOS7_OR_OVER]) {
-        decodedData = [NSData dataFromBase64String:tmp[1]];
-      } else {
-        #if !defined(__IPHONE_7_0)
-          decodedData = [[NSData alloc] initWithBase64Encoding:(NSString *)tmp[1]];
-        #endif
-      }
-    #else
-      decodedData = [NSData dataFromBase64String:tmp[1]];
-    #endif
+    NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:base64String options:0];
     layer.icon =  [[UIImage alloc] initWithData:decodedData];
     
     
