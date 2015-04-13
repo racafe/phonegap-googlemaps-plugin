@@ -84,7 +84,7 @@
      */
     
     NSArray *tmp = [urlStr componentsSeparatedByString:@","];
-    NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:base64String options:0];
+    NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:tmp[1] options:0];
     layer.icon =  [[UIImage alloc] initWithData:decodedData];
     
     
