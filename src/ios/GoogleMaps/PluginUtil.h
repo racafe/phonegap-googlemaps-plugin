@@ -11,7 +11,7 @@
 #endif
 #import <Foundation/Foundation.h>
 #import <Cordova/CDV.h>
-#import "MainViewController.h"
+
 
 @interface UIView (GoogleMapsPlugin)
 - (void)setFrameWithDictionary:(NSDictionary *) params;
