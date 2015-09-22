@@ -11,7 +11,7 @@
 #endif
 #import <Foundation/Foundation.h>
 #import <Cordova/CDV.h>
-
+#import "MainViewController.h"
 
 @interface UIView (GoogleMapsPlugin)
 - (void)setFrameWithDictionary:(NSDictionary *) params;
@@ -33,7 +33,13 @@
 @end
 
 
-
+-//		+
+-// Override the webViewDidFinishLoad		
+-// http://stackoverflow.com/questions/5272451/overriding-methods-using-categories-in-objective-c#5272612		
+-//		
+-@interface MainViewController (CDVViewController)		
+-- (void)webViewDidFinishLoad:(UIWebView*)theWebView;		
+-@end
 
 @interface PluginUtil : NSObject
 + (BOOL)isIOS7_OR_OVER;
