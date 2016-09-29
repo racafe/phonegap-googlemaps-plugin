@@ -116,8 +116,8 @@
             </feature>
         </config-file>
 
-        <header-file src="src/ios/GoogleMaps/Circle.h" />
-        <source-file src="src/ios/GoogleMaps/Circle.m" />
+        <!--header-file src="src/ios/GoogleMaps/Circle.h" />
+        <source-file src="src/ios/GoogleMaps/Circle.m" /-->
         <header-file src="src/ios/GoogleMaps/External.h" />
         <source-file src="src/ios/GoogleMaps/External.m" />
         <header-file src="src/ios/GoogleMaps/Geocoder.h" />
